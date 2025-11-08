@@ -7,10 +7,11 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser } = use(AuthContext);
+  const { createUser, updatedProfile } = use(AuthContext);
 
   const handleSignup = (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photo = e.target.photo.value;
@@ -32,6 +33,12 @@ const Signup = () => {
         console.log(result.user);
         setSuccess(true);
         e.target.reset();
+        //update user profile
+        updatedProfile(name, photo)
+          .then(() => {})
+          .catch((err) => {
+            console.log(err.message);
+          });
       })
       .catch((err) => {
         console.log(err);

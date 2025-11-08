@@ -79,7 +79,7 @@ const SignIn = () => {
         {error && <p className="text-red-500">{error}</p>}
         <p>
           New to our Website? Please{" "}
-          <Link className="text-green-500 hover:underline" to="/signup">
+          <Link className="text-blue-500 hover:underline" to="/signup">
             Sign Up
           </Link>
         </p>

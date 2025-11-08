@@ -66,11 +66,16 @@ const NavBar = () => {
       <div className="navbar-end">
         {user ? (
           <div className="flex gap-3 items-center">
-            <img
-              className="cursor-pointer w-12 h-12 rounded-full"
-              src="https://i.ibb.co.com/9kDPDGCS/profile.png"
-              alt=""
-            />
+            <div
+              className="tooltip tooltip-bottom"
+              data-tip={user?.displayName || "user"}
+            >
+              <img
+                className="cursor-pointer w-12 h-12 rounded-full"
+                src="https://i.ibb.co.com/9kDPDGCS/profile.png"
+                alt=""
+              />
+            </div>
             <button
               onClick={handleSignOut}
               className="cursor-pointer text-white bg-blue-500 px-3 py-3 rounded-md"
