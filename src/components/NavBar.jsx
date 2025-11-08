@@ -1,7 +1,16 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
+  const { user, signOutUser } = use(AuthContext);
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   const links = (
     <>
       <li>
@@ -16,7 +25,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 p-0 shadow-sm mt-2">
+    <div className="w-11/12 mx-auto navbar bg-base-100 p-0 shadow-sm mt-2 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -43,20 +52,48 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <NavLink to='/'>
-            <img className="w-12 h-12 rounded-full" src="https://i.ibb.co.com/Ng60xSsn/skillswap.jpg" alt="" />
+        <NavLink to="/">
+          <img
+            className="w-12 h-12 rounded-full"
+            src="https://i.ibb.co.com/Ng60xSsn/skillswap.jpg"
+            alt=""
+          />
         </NavLink>
       </div>
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-       
-          <div className="flex gap-3">
-            <Link to='/signin' className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer">Sign In</Link>
-            <Link to='/signup' className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer">Sign Up</Link>
+        {user ? (
+          <div className="flex gap-3 items-center">
+            <img
+              className="cursor-pointer w-12 h-12 rounded-full"
+              src="https://i.ibb.co.com/9kDPDGCS/profile.png"
+              alt=""
+            />
+            <button
+              onClick={handleSignOut}
+              className="cursor-pointer text-white bg-blue-500 px-3 py-3 rounded-md"
+            >
+              Sign Out
+            </button>
           </div>
-        
+        ) : (
+          <div className="flex gap-3">
+            <Link
+              to="/signin"
+              className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signup"
+              className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [error, setError] = useState("");
+  const { signInUser, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
   // console.log(location);
   const navigate = useNavigate();
@@ -11,22 +14,32 @@ const SignIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
-    setError('');
+    setError("");
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        e.target.reset();
+        navigate(location.state || '/');
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
+  const handleSignInGoogle = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location.state || "/");
+      })
+      .catch((err) => {
+        toast.warn(err.message);
+      });
   };
   const forgetPass = () => {
     console.log("reset password");
   };
-  const handleSignInGoogle =() =>{
-    // signInWithGoogle()
-    // .then((result) =>{
-    //   console.log(result.user);
-    // navigate(location.state || '/');
-    // })
-    // .catch(err =>{
-    //   toast.warning(err.message);
-    // })
-  }
   return (
     <div className="mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
@@ -52,10 +65,13 @@ const SignIn = () => {
                 Forgot password?
               </button>
             </div>
-            <button className="btn bg-black mt-4">Login</button>
+            <button className="btn bg-black text-white font-semibold mt-4">Login</button>
           </fieldset>
         </form>
-        <button onClick={handleSignInGoogle} className="mt-2 btn bg-white text-black border-[#e5e5e5]">
+        <button
+          onClick={handleSignInGoogle}
+          className="mt-2 btn bg-white text-black border-[#e5e5e5]"
+        >
           <FcGoogle size={26} />
           Sign In with Google
         </button>

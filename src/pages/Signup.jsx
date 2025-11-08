@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = use(AuthContext);
+
   const handleSignup = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -21,8 +24,19 @@ const Signup = () => {
       return;
     }
 
-    setError('');
+    setError("");
     setSuccess(false);
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setSuccess(true);
+        e.target.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
   };
   const togglePasswordShow = (e) => {
     e.preventDefault();
