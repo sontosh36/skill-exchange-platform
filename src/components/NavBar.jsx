@@ -50,11 +50,7 @@ const NavBar = () => {
           </ul>
         </div>
         <NavLink to="/">
-          <img
-            className="w-12 h-12 rounded-full"
-            src="https://i.ibb.co.com/Ng60xSsn/skillswap.jpg"
-            alt=""
-          />
+          <h2 className="text-2xl font-bold text-blue-900">SkillEx</h2>
         </NavLink>
       </div>
       <div className="navbar-center hidden md:flex">

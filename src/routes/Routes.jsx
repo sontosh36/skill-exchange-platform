@@ -6,6 +6,7 @@ import Signup from "../pages/Signup";
 import Home from "../pages/Home";
 import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../pages/Profile";
+import SkillDetails from "../pages/skillDetails";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <Profile />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/skillDetails/:skillId",
+        element: (
+          <PrivateRoutes>
+            <SkillDetails />
           </PrivateRoutes>
         ),
       },

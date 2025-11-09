@@ -62,6 +62,11 @@ const Hero = () => {
             />
           </div>
         </SwiperSlide>
+        <SwiperSlide>
+          <div>
+            <img className="rounded-lg w-full h-40" src="https://i.ibb.co.com/v6jsf7z7/student-learning.jpg" alt="" />
+          </div>
+        </SwiperSlide>
       </Swiper>
     </div>
   );
