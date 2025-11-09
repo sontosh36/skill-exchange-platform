@@ -6,10 +6,10 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <footer className="footer grid grid-cols-1 md:grid-cols-3 place-items-center gap-6 bg-black text-white p-10">
-      <nav className="place-items-center">
+    <footer className="footer grid grid-cols-1 md:grid-cols-3 gap-6 bg-black text-white p-10">
+      <nav className="">
         <img
-          className="w-30 h-30 rounded-full"
+          className="w-20 h-20 rounded-full"
           src="https://i.ibb.co.com/Ng60xSsn/skillswap.jpg"
           alt=""
         />

@@ -17,15 +17,12 @@ const NavBar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/blog">Blog</NavLink>
-      </li>
-      <li>
         <NavLink to="/profile">Profile</NavLink>
       </li>
     </>
   );
   return (
-    <div className="w-11/12 mx-auto navbar bg-base-100 p-0 shadow-sm mt-2 mb-4">
+    <div className="w-11/12 mx-auto navbar p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -72,8 +69,8 @@ const NavBar = () => {
             >
               <img
                 className="cursor-pointer w-12 h-12 rounded-full"
-                src="https://i.ibb.co.com/9kDPDGCS/profile.png"
-                alt=""
+                src={user.photoURL}
+                alt={user.displayName}
               />
             </div>
             <button

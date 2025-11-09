@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
@@ -8,6 +8,7 @@ const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, updatedProfile } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -15,7 +16,6 @@ const Signup = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photo = e.target.photo.value;
-    console.log(email, password, photo);
 
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordPattern.test(password)) {
@@ -31,11 +31,13 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setSuccess(true);
-        e.target.reset();
         //update user profile
         updatedProfile(name, photo)
-          .then(() => {})
+          .then(() => {
+            setSuccess(true);
+             e.target.reset();
+             navigate('/');
+          })
           .catch((err) => {
             console.log(err.message);
           });
@@ -91,7 +93,7 @@ const Signup = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-            <button className="btn btn-neutral mt-4 ">Register</button>
+            <button className="btn btn-primary mt-4 ">Register</button>
           </fieldset>
         </form>
         {success && (

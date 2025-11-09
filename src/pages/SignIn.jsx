@@ -3,9 +3,11 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { signInUser, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
   // console.log(location);
@@ -20,7 +22,7 @@ const SignIn = () => {
       .then((result) => {
         console.log(result.user);
         e.target.reset();
-        navigate(location.state || '/');
+        navigate(location.state || "/");
       })
       .catch((err) => {
         setError(err.message);
@@ -40,6 +42,10 @@ const SignIn = () => {
   const forgetPass = () => {
     console.log("reset password");
   };
+  const togglePassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
   return (
     <div className="mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
@@ -54,18 +60,28 @@ const SignIn = () => {
               placeholder="Email"
             />
             <label className="label">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="input"
-              placeholder="Password"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="input"
+                placeholder="Password"
+              />
+              <button
+                onClick={togglePassword}
+                className="btn btn-xs top-2 right-5 absolute"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
             <div>
               <button onClick={forgetPass} className="link link-hover">
                 Forgot password?
               </button>
             </div>
-            <button className="btn bg-black text-white font-semibold mt-4">Login</button>
+            <button className="btn bg-blue-500 text-white font-semibold mt-4">
+              Login
+            </button>
           </fieldset>
         </form>
         <button

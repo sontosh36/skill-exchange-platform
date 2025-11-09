@@ -3,14 +3,11 @@
 @plugin "daisyui" {
   themes: light --default;
 }
-@plugin "daisyui/theme" {
-  name: light;
-  default: true;
-}
 
 * {
   font-family: "Poppins", sans-serif;
 }
 a.active {
   text-decoration: underline;
+  color: blue;
 }

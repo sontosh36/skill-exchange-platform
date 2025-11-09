@@ -4,7 +4,6 @@ import Errorpage from "../pages/Errorpage";
 import SignIn from "../pages/SignIn";
 import Signup from "../pages/Signup";
 import Home from "../pages/Home";
-import Blogs from "../pages/Blogs";
 import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../pages/Profile";
 
@@ -18,10 +17,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-      },
-      {
-        path: "blog",
-        Component: Blogs,
       },
       {
         path: "signin",

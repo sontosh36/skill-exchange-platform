@@ -41,7 +41,12 @@ const AuthProvider = ({ children }) => {
           displayName: name,
           photoURL: photo,
         });
-        setUser({ ...currentUser });
+        const updateUser = {
+          ...currentUser,
+          displayName: name,
+          photoURL: photo,
+        };
+        setUser(updateUser);
         return true;
       } catch (error) {
         console.log(error);
