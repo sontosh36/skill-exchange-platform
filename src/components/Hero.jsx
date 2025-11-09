@@ -3,7 +3,8 @@ import { FaPlayCircle } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
+import { LuBriefcaseBusiness } from "react-icons/lu";
 
 const Hero = () => {
   return (
@@ -31,41 +32,37 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <div className="flex-1 relative">
-        <img
-          className="rounded-lg"
-          src="https://i.ibb.co.com/B24kTRzt/download-1.jpg"
-          alt=""
-        />
-        <div className="p-2 flex gap-2 rounded-xl absolute h-13 top-39 -left-4 bg-white">
+
+      <Swiper
+        className="flex-1 w-full"
+        spaceBetween={20}
+        // navigation={true}
+        autoplay={true}
+        slidesPerView={1}
+        modules={[Navigation, Autoplay]}
+        onSlideChange={() => console.log("slide changed")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        <SwiperSlide>
           <div>
             <img
-              className="w-10 h-10 rounded-full"
+              className="w-full rounded-lg h-40"
+              src="https://i.ibb.co.com/B24kTRzt/download-1.jpg"
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div>
+            <img
+              className="rounded-lg w-full h-40"
               src="https://i.ibb.co.com/tpNKb4bF/download.jpg"
               alt=""
             />
           </div>
-          <div>
-            <h4 className="text-xs font-semibold">50+</h4>
-            <p className="text-xs font-semibold text-gray-500">
-              Expert Mentors
-            </p>
-          </div>
-        </div>
-        <div className="p-2 flex gap-2 rounded-xl absolute h-13 -top-9 left-35 bg-white">
-          <div>
-            <img
-              className="w-10 h-10 rounded-full"
-              src="https://i.ibb.co.com/4R0SZbKh/download-3.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <h4 className="text-xs font-semibold">10K+</h4>
-            <p className="text-xs font-semibold text-gray-500">Total student</p>
-          </div>
-        </div>
-      </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
