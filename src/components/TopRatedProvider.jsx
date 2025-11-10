@@ -13,11 +13,13 @@ const TopRatedProvider = () => {
         <Swiper
           className="flex-1 w-full"
           spaceBetween={20}
-          // navigation={true}
           autoplay={true}
           slidesPerView={2}
           modules={[Navigation, Autoplay]}
-          // onSwiper={(swiper) => console.log(swiper)}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+          }}
         >
           <SwiperSlide>
             <div className="px-2 sm:px-3">
@@ -34,7 +36,9 @@ const TopRatedProvider = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 italic leading-relaxed">
-                  "Students can browse course catalogs, read reviews, compare instructors, and purchase subscriptions or single courses with flexible monthly or yearly options."
+                  "Students can browse course catalogs, read reviews, compare
+                  instructors, and purchase subscriptions or single courses with
+                  flexible monthly or yearly options."
                 </p>
               </div>
             </div>
@@ -54,7 +58,9 @@ const TopRatedProvider = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 italic leading-relaxed">
-                  "Instructors create structured lessons, track student progress, and provide personalized feedback to ensure learners gain practical, real-world skills efficiently."
+                  "Instructors create structured lessons, track student
+                  progress, and provide personalized feedback to ensure learners
+                  gain practical, real-world skills efficiently."
                 </p>
               </div>
             </div>
@@ -74,7 +80,9 @@ const TopRatedProvider = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 italic leading-relaxed">
-                  "Our platform connects students with expert instructors, offering diverse courses across coding, design, music, language, and personal development."
+                  "Our platform connects students with expert instructors,
+                  offering diverse courses across coding, design, music,
+                  language, and personal development."
                 </p>
               </div>
             </div>
@@ -94,7 +102,9 @@ const TopRatedProvider = () => {
                   </div>
                 </div>
                 <p className="text-gray-300 italic leading-relaxed">
-                  "Experienced IT instructor providing hands-on training, expert guidance, and career-focused learning for technology and digital skills."
+                  "Experienced IT instructor providing hands-on training, expert
+                  guidance, and career-focused learning for technology and
+                  digital skills."
                 </p>
               </div>
             </div>
