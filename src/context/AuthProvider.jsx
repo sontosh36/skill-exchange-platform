@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "./../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -49,7 +50,7 @@ const AuthProvider = ({ children }) => {
         setUser(updateUser);
         return true;
       } catch (error) {
-        console.log(error);
+        toast.warn(error);
         return false;
       }
     }

@@ -5,11 +5,10 @@ import SkillCard from "../components/SkillCard";
 const Skills = () => {
   const { skills, loading } = useSkills();
   const data = skills;
-  //   console.log(data);
   return (
     <div className="w-11/12 mx-auto py-14 mt-2">
-      <div className="w-7/12 mx-auto text-center space-y-3 mb-4">
-        <h2 className="text-2xl font-bold">Explore Popular Skills</h2>
+      <div className="w-11/12 md:w-7/12 mx-auto text-center space-y-3 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold">Explore Popular Skills</h2>
         <p className="text-gray-500">
           Discover the most in-demand skills shared by our talented community.
           Learn, tech, and grow together.

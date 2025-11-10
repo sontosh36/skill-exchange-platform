@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -8,7 +9,7 @@ const NavBar = () => {
     signOutUser()
       .then(() => {})
       .catch((err) => {
-        console.log(err.message);
+        toast.warn(err.message);
       });
   };
   const links = (
@@ -22,7 +23,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="w-11/12 mx-auto navbar p-0">
+    <div className="w-11/12 mx-auto bg-white navbar p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -50,7 +51,7 @@ const NavBar = () => {
           </ul>
         </div>
         <NavLink to="/">
-          <h2 className="text-2xl font-bold text-blue-900">SkillEx</h2>
+          <h2 className="text-lg md:text-2xl font-bold text-blue-900">SkillEx</h2>
         </NavLink>
       </div>
       <div className="navbar-center hidden md:flex">
@@ -64,14 +65,14 @@ const NavBar = () => {
               data-tip={user?.displayName || "user"}
             >
               <img
-                className="cursor-pointer w-12 h-12 rounded-full"
+                className="cursor-pointer w-10 h-10 md:w-12 md:h-12 rounded-full"
                 src={user.photoURL}
                 alt={user.displayName}
               />
             </div>
             <button
               onClick={handleSignOut}
-              className="cursor-pointer text-white bg-blue-500 px-3 py-3 rounded-md"
+              className="cursor-pointer text-sm md:text-lg text-white bg-blue-500 px-3 py-3 rounded-md"
             >
               Sign Out
             </button>
@@ -80,13 +81,13 @@ const NavBar = () => {
           <div className="flex gap-3">
             <Link
               to="/signin"
-              className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer"
+              className="text-white text-xs md:text-md lg:text-lg bg-blue-500 px-2 md:px-4 py-2 rounded-md cursor-pointer"
             >
               Sign In
             </Link>
             <Link
               to="/signup"
-              className="text-white bg-blue-500 px-4 py-2 rounded-md cursor-pointer"
+              className="text-white text-xs md:text-md lg:text-lg bg-blue-500 px-2 md:px-4 py-2 rounded-md cursor-pointer"
             >
               Sign Up
             </Link>

@@ -3,18 +3,20 @@ import Hero from "./../components/Hero";
 import Skills from "./skills";
 import TopRatedProvider from "../components/TopRatedProvider";
 import HowItWork from "../components/HowItWork";
+import Challenge from "../components/Challenge";
 
 const Home = () => {
   return (
-    <div className="">
+    <div>
       <Hero />
-      <div className="bg-white">
+      <div className="bg-base-100">
         <Skills />
       </div>
       <div className="bg-black text-white">
         <TopRatedProvider/>
       </div>
-      <div className="bg-white">
+      <div className="bg-base-100">
+        <Challenge/>
         <HowItWork/>
       </div>
     </div>

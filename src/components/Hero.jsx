@@ -6,25 +6,25 @@ import "swiper/css";
 
 const Hero = () => {
   return (
-    <div className="w-11/12 mx-auto flex justify-center gap-4 items-center py-6 px-4">
+    <div className="w-11/12 mx-auto flex flex-col md:flex-row space-y-3 md:space-x-0 justify-center gap-4 items-center py-6 px-4">
       <div className="flex-2 space-y-2">
-        <h3 className="text-xl">Welcome to our</h3>
-        <h2 className="text-5xl leading-20 font-extrabold mb-4">
+        <h3 className="text-lg md:text-xl">Welcome to our</h3>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl leading-10 md:leading-20 font-extrabold mb-4">
           Learn, Grow and <br /> Succeed{" "}
           <span className="rounded-tl-4xl rounded-br-4xl bg-blue-600 text-white px-2 py-1">
             Online
           </span>
         </h2>
-        <p className="text-gray-600 text-md mb-4">
+        <p className="text-gray-600 text-sm md:text-md mb-4">
           Learning Management System, a place to learn at your own place,
           anytime and anywhere. With courses for all ages and interests. you can
           gain new skills.
         </p>
         <div className="flex items-center gap-4">
-          <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-xl cursor-pointer transition">
+          <button className="bg-blue-600 text-white px-5 py-2 rounded-full text-md md:text-xl cursor-pointer transition">
             Get Started
           </button>
-          <button className="rounded-full border-blue-600 border-2 px-5 py-2 text-xl cursor-pointer transition bg-white hover:bg-blue-600 hover:text-white flex gap-2 items-center">
+          <button className="rounded-full border-blue-600 border-2 px-5 py-2 text-md md:text-xl cursor-pointer transition bg-white hover:bg-blue-600 hover:text-white flex gap-2 items-center">
             {" "}
             <FaPlayCircle /> Free Trial
           </button>

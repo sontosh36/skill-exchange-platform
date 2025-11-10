@@ -8,7 +8,7 @@ const useSkills = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("../skills.json")
+    axios("/skills.json")
       .then((skill) => setSkills(skill.data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
