@@ -19,7 +19,7 @@ const SkillCard = ({ skill }) => {
         <p>Price: ${price}</p>
       </div>
       <Link to={`/skillDetails/${skillId}`}>
-      <button className="cursor-pointer px-3 py-2 rounded-lg bg-blue-500 text-white">See Details</button></Link>
+      <button className="cursor-pointer px-3 py-2 rounded-lg bg-blue-500 text-white">View Details</button></Link>
     </div>
   );
 };

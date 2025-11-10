@@ -3,9 +3,9 @@ import useSkills from "../CustomHooks/useSkills";
 import SkillCard from "../components/SkillCard";
 
 const Skills = () => {
-  const { skills } = useSkills();
+  const { skills, loading } = useSkills();
   const data = skills;
-//   console.log(data);
+  //   console.log(data);
   return (
     <div className="w-11/12 mx-auto py-14 mt-2">
       <div className="w-7/12 mx-auto text-center space-y-3 mb-4">
@@ -15,9 +15,15 @@ const Skills = () => {
           Learn, tech, and grow together.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {data.map((skill) => <SkillCard key={skill.skillId} skill={skill}></SkillCard>)}
-      </div>
+      {loading ? (
+        <span className="loading loading-spinner text-success"></span>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {data.map((skill) => (
+            <SkillCard key={skill.skillId} skill={skill}></SkillCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

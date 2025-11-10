@@ -8,7 +8,7 @@ const Profile = () => {
     toast.success('Profile Update Successful');
   }
   return (
-    <div className="py-4">
+    <div className="py-4 min-h-screen">
        <div className="shadow-sm rounded-md w-6/12 mx-auto flex flex-col items-center bg-base-200 p-4">
         <h2 className="font-bold text-3xl text-center">My Profile</h2>
         {user &&  <img className="w-15 h-15  rounded-full mt-2" src={user.photoURL} alt="" />}

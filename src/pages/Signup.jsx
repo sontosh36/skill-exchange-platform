@@ -2,12 +2,14 @@ import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser, updatedProfile } = use(AuthContext);
+  const { createUser, updatedProfile, signInWithGoogle } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
@@ -35,8 +37,8 @@ const Signup = () => {
         updatedProfile(name, photo)
           .then(() => {
             setSuccess(true);
-             e.target.reset();
-             navigate('/');
+            e.target.reset();
+            navigate("/");
           })
           .catch((err) => {
             console.log(err.message);
@@ -50,6 +52,16 @@ const Signup = () => {
   const togglePasswordShow = (e) => {
     e.preventDefault();
     setShowPassword(!showPassword);
+  };
+  const handleSignInGoogle = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location.state || "/");
+      })
+      .catch((err) => {
+        toast.warn(err.message);
+      });
   };
   return (
     <div className="mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -93,12 +105,19 @@ const Signup = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-            <button className="btn btn-primary mt-4 ">Register</button>
+            <button className="btn bg-blue-500 mt-4 text-white ">
+              Register
+            </button>
           </fieldset>
         </form>
-        {success && (
-          <p className="text-green-500">Account create Sucessfully</p>
-        )}
+        <button
+          onClick={handleSignInGoogle}
+          className="mt-2 btn bg-white text-black border-[#e5e5e5]"
+        >
+          <FcGoogle size={26} />
+          Sign In with Google
+        </button>
+        {success && toast.success('account create successful')}
         {error && <p className="text-red-500">{error}</p>}
         <p>
           Already have an account? Please{" "}

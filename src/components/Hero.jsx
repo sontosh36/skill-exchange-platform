@@ -3,8 +3,6 @@ import { FaPlayCircle } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
-// import "swiper/css/navigation";
-import { LuBriefcaseBusiness } from "react-icons/lu";
 
 const Hero = () => {
   return (
@@ -36,12 +34,9 @@ const Hero = () => {
       <Swiper
         className="flex-1 w-full"
         spaceBetween={20}
-        // navigation={true}
         autoplay={true}
         slidesPerView={1}
         modules={[Navigation, Autoplay]}
-        onSlideChange={() => console.log("slide changed")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         <SwiperSlide>
           <div>
